@@ -112,7 +112,7 @@ void main() async {
     var left = 1550.0;
     var top = 300.0;
     win.position = Offset(left, top);
-    win.title = "Custom window with Flutter";
+    win.title = "Robin Client";
     // win .position(Offset(500,500));
     win.show();
     win.position = Offset(left, top);
@@ -208,6 +208,7 @@ class _MyAppState extends State<MyApp> {
             child: StreamBuilder(
               stream: channel.stream,
               builder: (context, snapshot) {
+                T? cast<T>(x) => x is T ? x : null;
                 if (!snapshot.hasError &&
                     snapshot.connectionState == ConnectionState.active &&
                     snapshot.hasData) {
@@ -216,9 +217,9 @@ class _MyAppState extends State<MyApp> {
                             .elementAt(messages.length - 2)
                             .messageContent !=
                         snapshot.data) {
-                      messages.add(ChatMessage(
-                          messageContent: snapshot.data,
-                          messageType: 'receiver'));
+                messages.add(ChatMessage(
+                    messageContent: snapshot.data,
+                    messageType: 'receiver'));
                     }
                   } else {
                     messages.add(ChatMessage(
@@ -320,7 +321,7 @@ class _MyAppState extends State<MyApp> {
           Row(
             children: <Widget>[
               const SizedBox(
-                width: 10,
+                width: 8,
               ),
               Expanded(
                 child: TextField(
@@ -356,13 +357,14 @@ class _MyAppState extends State<MyApp> {
                 backgroundColor: mainColor,
                 elevation: 0,
               ),
-              const SizedBox(
+              SizedBox(
                 width: 10,
               ),
             ],
           ),
-          const SizedBox(
-            width: 20,
+          SizedBox(
+            width: 10,
+            height: 10,
           ),
         ],
       ),
@@ -371,16 +373,16 @@ class _MyAppState extends State<MyApp> {
 }
 
 final buttonColors = WindowButtonColors(
-    iconNormal: const Color(0xFF805306),
+    iconNormal: fontColor, //const Color(0xFF805306),
     mouseOver: mainColor,
-    mouseDown: const Color(0xFF805306),
-    iconMouseOver: const Color(0xFF805306),
+    mouseDown: Colors.white, //const Color(0xFF805306),
+    iconMouseOver: Colors.white,// const Color(0xFF805306),
     iconMouseDown: mainColor);
 
 final closeButtonColors = WindowButtonColors(
     mouseOver: darkColor,
     mouseDown: darkColor,
-    iconNormal: const Color(0xFF805306),
+    iconNormal: fontColor, //const Color(0xFF805306),
     iconMouseOver: Colors.white);
 
 class WindowButtons extends StatefulWidget {
