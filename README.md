@@ -1,4 +1,4 @@
-# Websockets client
+# Websocket client
 
-Websockets client for desktop and mobile devices developped with Flutter.
+Websocket client for desktop and mobile devices developped with Flutter.
 
